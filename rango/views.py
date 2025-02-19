@@ -14,10 +14,12 @@ def index(request):
   #order_by('-likes'): order by number of likes in descending order (prefix -)
   #[:5] index up to 5 items, using list operator []
   category_list = Category.objects.order_by('-likes')[:5]
+  pages_list = Page.objects.order_by('-views')[:5]
 
   context_dict = {}
   context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
   context_dict['categories'] = category_list
+  context_dict['pages'] = pages_list
 
   return render(request, 'rango/index.html', context = context_dict)
 
